@@ -1,18 +1,44 @@
+*{
+    color: #fafaf9;
+    
+}
+/* for the page */
+body{
+    background-color: #292524;
+    color : #fafaf9 ;
+    font-family: "Roboto", sans-serif;
+}
+
+/* styling for font */
 h1{
     font-size: 44px;
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
+    
+    /* RGB format - red green blue */
 }
 
-p{
+.fact{
     font: 20px;
     line-height: 1.4;
-    font-family: sans-serif;
-} 
-
-span{
-    text-transform: uppercase;
-    font-size: 14px
+    font-family: "Poppins",sans-serif;
+    background-color: #44403c;
 }
+
+.fact-form{
+    background-color: #44403c;
+}
+
+.tag{
+    text-transform: uppercase;
+    font-size: 14px;
+    
+}
+
+ul{
+    list-style: none ;
+   
+}
+
 
