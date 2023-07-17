@@ -16,9 +16,13 @@
     
 </head>
 <body>
+    <div class="container">
         <header class = "head">
-            <H1>Today I learned</H1>
-            <button>Share a fact</button>
+            <div class = "logo">
+                <img src="logo.png" height="68" width="68" alt="logo">
+                <h1>Today I learned</h1>
+            </div>
+            <button class="btn btn-large" >Share a fact</button>
         </header>
         <form class ="fact-form">
             <input type="text" placeholder="Share fact with world" />
@@ -37,45 +41,60 @@
                 <option value="finance">Finance</option>
                 <option value="others">Others</option>
             </select>
-            <button>Search</button>
-            <button>Post</button>
+            <button class="btn btn-large">Post</button>
         </form>
-    <main>
-        <aside>
-            <button>All</button>
-            <button>Technology</button>
-            <button>Society</button>
-            <button>Science</button>
-            <button>Business</button>
-            <button>Politics</button>
+        <main class="main">
+            <aside>
+                <ul>
+                    <li class="category">
+                        <button class="btn btn-all">All</button>
+                    </li>
+                    <li class="category">
+                        <button class="btn btn-category" style="background-color: #3b82f6">Technology</button>
+                    </li>
+                    <li class="category">
+                        <button class="btn btn-category" style="background-color: #eab308">Society</button>
+                    </li>
+                    <!-- <li>
+                        <button class="btn">Science</button>
+                    </li>
+                    <li>
+                        <button class="btn">Business</button>
+                    </li>
+                    <li>
+                        <button class="btn">Politics</button>
+                    </li> -->
+                </ul>
+            </aside>
+        </main>
+        
         </aside>
         <section>
                 <ul>
                 <li class="fact">
-                    <p >React is being developed by Meta formerly Facebook <span class="tag">#technology</span>
-                        <a href="https://reactjs.org/" target="_blank">Source</a>
+                    <p >React is being developed by Meta formerly Facebook 
+                        <a class="src" href="https://reactjs.org/" target="_blank">Source</a>
                     </p>
-                    <div>
-                        <button>👍<strong>24</strong></button>
-                        <button>👎<strong>9</strong></button>
-                        <!-- add fire emoji -->
-                        <button>🔥<strong>4</strong></button>
+                    <span class="tag" ">#technology</span>
+                    <div class="vote">
+                        <button>🤯<strong>9</strong></button>
+                        <button>⛔️<strong>4</strong></button>
                     </div>
                 </li>
                 <li class="fact">
-                    <p class="fact">Millennial dads spend 3 times as much time with their kids than their fathers spent with them. In 1982, 43% of fathers had never changed a diaper. Today, that number is down to 3% <span class="tag">#society</span>
-                        <a href="https://www.pewresearch.org/fact-tank/2019/06/12/fathers-day-facts/" target="_blank">Source</a>
+                    <p class="fact">Millennial dads spend 3 times as much time with their kids than their fathers spent with them. In 1982, 43% of fathers had never changed a diaper. Today, that number is down to 3% 
+                        <a class="src" href="https://www.pewresearch.org/fact-tank/2019/06/12/fathers-day-facts/" target="_blank">Source</a>
                     </p>
-                    <div>
+                    <span class="tag" >#society</span>
+                    <div class="vote">
                         <button>👍<strong>11</strong></button>
-                        <button>👎<strong>2</strong></button>
-                        <!-- add fire emoji -->
-                        <button>🔥<strong>0</strong></button>
+                        <button>🤯<strong>2</strong></button>
+                        <button>⛔️<strong>0</strong></button>
                     </div>
-
                 </li>
             </ul>
         </section>
+        </div>
     </main>
 </body>
 </html>
