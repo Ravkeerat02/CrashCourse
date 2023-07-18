@@ -82,13 +82,62 @@ h1{
     padding : 16px 50px;
     font-size: 20px;
     line-height: 1.5;
-    text-align: center;
-
+    display : flex;
+    align-items: center;
+    gap:16px;
 }
+
+.fact-form input , .fact-form select{
+    border: none;
+    background-color: #fafaf9;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    max-width: 200%;
+    font-family: inherit;
+}
+
+.fact-form input:first-child{
+    /* will take all the space */
+    flex-grow: 1;
+}
+
+/* pseudo element */
+.fact-form input::placeholder{
+    color: #44403c;
+}
+
+.fact-form span{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 18px;
+}
+
 
 .vote{
     margin-left: auto;
+    /* doesnt allow shrinking */
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
 
+}
+
+.vote button{
+    border: none;
+    background-color: #44403c;
+    font-size: 18px;
+    padding : 6px 12px;
+    border-radius: 20px;
+    color: inherit;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.vote button:hover {
+    background-color: #292524;
 }
 
 .tag{
@@ -96,6 +145,17 @@ h1{
     font-size: 14px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.tag{
+    background-color: #3b82f6;
+    color: #fafaf9;
+}
+
+.tag-2{
+    background-color: #eab308;
+    color: #fafaf9;
 }
 
 ul{
@@ -115,36 +175,93 @@ ul{
     color: #3b82f6
 }
 
-.btn{
-    border: none;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.btn {
+    display: block;
+    width: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     line-height: 1;
     text-transform: uppercase;
     font-size: 18px;
     padding: 10px 20px;
-    /* goes from left-right */
-    background-image: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6 ) ;
-    color: inherit 
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.btn-large{
+
+
+.btn .btn-large{
     font-size: 20px;
-    font-weight: 700;
     padding: 20px 32px 17px;
 }
 
-.btn-all{
-    margin-bottom: 16px;
-    /* will be based on parent element */
+/* Styling for category buttons */
+.btn-category {
     width: 100%;
+    background-image: linear-gradient(135deg, #3b82f6, #93c5fd, #031e4a);
+    /* Additional styles for hover effect */
+    transition: transform 0.2s;
 }
 
-.btn-category{
-    /* margin-bottom: 16px; */
-    width: 100%;
-    background-image: none;
+/* Hover effect for category buttons */
+.btn-category:hover {
+    transform: scale(1.1) rotate(-2deg);
 }
 
+/* for responsive decive */
 
-
+@media (max-width: 768px){
+    .main{
+        grid-template-columns: 1fr;
+    }
+    .head{
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo{
+        margin-bottom: 20px;
+    }
+    .fact-form{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .fact-form input , .fact-form select{
+        width: 100%;
+    }
+    .vote{
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .vote button{
+        font-size: 16px;
+        padding: 4px 8px;
+    }
+    .btn-large{
+        font-size: 18px;
+        padding: 16px 24px 13px;
+    }
+    .fact{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .fact-form{
+        padding: 16px 20px;
+    }
+    .fact-form span{
+        margin-right: 10px;
+    }
+    .fact-form input , .fact-form select{
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .tag{
+        margin-bottom: 10px;
+    }
+    .tag-2{
+        margin-bottom: 10px;
+    }
+    .src{
+        margin-left: 0;
+    }
+}
 
