@@ -10,14 +10,10 @@ const CATEGORIES = [
     { name: "news", color: "#8b5cf6" },
   ];
 
-
-
   
 const btn = document.querySelector('.share')
 const form = document.querySelector('.fact-form')
 const factsList = document.querySelector(".fact-list");
-// const apiKey = process.env.REACT_APP_SUPABASE_API_KEY;
-// const authToken = process.env.REACT_APP_SUPABASE_AUTH_TOKEN;
 
 // RENDERS LIST
 factsList.innerHTML = "";
