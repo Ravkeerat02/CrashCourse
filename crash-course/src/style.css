@@ -1,99 +1,97 @@
-*{
+* {
     /* color: #fafaf9; */
     margin: 0;
     padding: 0;
     /* default - makes height and width work in sync */
     box-sizing: border-box;
-}
-
-/* descednat selector */
-.logo img{
+  }
+  
+  /* descendant selector */
+  .logo img {
     width: 68px;
     height: 68px;
-}
-
-.category{
+  }
+  
+  .category {
     margin-bottom: 16px;
-}
-
-.head{
+  }
+  
+  .header {
     margin-left: 40px;
     margin-bottom: 50px;
-    display : flex;
+    display: flex;
     align-items: center;
-    justify-content: space-between; 
-    padding: 10px
-}
-
-.logo{
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-
-
-body{
+  }
+  
+  body {
     background-color: #292524;
-    color : #fafaf9 ;
+    color: #fafaf9;
     font-family: "Roboto", sans-serif;
-    padding : 48px 64px;
-}
-
-.hidden{
+    padding: 48px 64px;
+  }
+  
+  .hidden {
     /* makes it important and comes before anything */
     display: none !important;
-}
-
-.main{
+  }
+  
+  .main {
     display: grid;
     grid-template-columns: 250px 1fr;
-    gap: 48px
-}
-
-
-# {
+    gap: 48px;
+  }
+  
+  # {
     max-width: 1200px;
-    margin : 0 auto;
+    margin: 0 auto;
     /* padding: 0 20px; */
-}
-
-h1{
+  }
+  
+  h1 {
     font-size: 44px;
     text-transform: uppercase;
-    font-weight: 700;    
+    font-weight: 700;
     text-align: center;
     line-height: 1;
     margin-top: 6px;
-}
-
-.fact{
+  }
+  
+  .fact {
     font: 20px;
     line-height: 1.4;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: #44403c;
     margin-bottom: 20px;
     /* inside box */
-    padding: 16px 30px ; 
+    padding: 16px 30px;
     letter-spacing: -1px;
-    /* border : 4px solid #fafaf9; */
-    display:  flex ; 
+    /* border: 4px solid #fafaf9; */
+    display: flex;
     align-items: center;
-    gap: 25px; 
-
-}
-
-.fact-form{
+    gap: 25px;
+  }
+  
+  .fact-form {
     background-color: #44403c;
     margin-bottom: 40px;
-    padding : 16px 50px;
+    padding: 16px 50px;
     font-size: 20px;
     line-height: 1.5;
-    display : flex;
+    display: flex;
     align-items: center;
-    gap:16px;
-}
-
-.fact-form input , .fact-form select{
+    gap: 16px;
+  }
+  
+  .fact-form input,
+  .fact-form select {
     border: none;
     background-color: #fafaf9;
     padding: 10px 20px;
@@ -102,87 +100,88 @@ h1{
     margin-right: 10px;
     max-width: 200%;
     font-family: inherit;
-}
-
-.fact-form input:first-child{
+  }
+  
+  .fact-form input:first-child {
     /* will take all the space */
-    flex-grow: 1;
-}
-
-/* pseudo element */
-.fact-form input::placeholder{
+    /* flex-grow: 1; */
+  }
+  
+  /* pseudo element */
+  .fact-form input::placeholder {
     color: #44403c;
-}
+    display:block
 
-.fact-form span{
+  }
+  
+  .fact-form span {
     font-weight: 600;
     font-size: 18px;
     margin-right: 18px;
-}
-
-
-.vote{
+  }
+  
+  .vote {
     margin-left: auto;
-    /* doesnt allow shrinking */
+    /* doesn't allow shrinking */
     flex-shrink: 0;
     display: flex;
     gap: 8px;
-
-}
-
-.vote button{
+  }
+  
+  .vote button {
     border: none;
     background-color: #44403c;
     font-size: 18px;
-    padding : 6px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
     color: inherit;
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
-}
-
-.vote button:hover {
+  }
+  
+  .vote button:hover {
     background-color: #292524;
-}
-
-.tag{
+  }
+  
+  .tag {
     text-transform: uppercase;
     font-size: 14px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 5px 10px;
     border-radius: 10px;
-}
-
-.tag{
+  }
+  
+  .tag {
     background-color: #3b82f6;
     color: #fafaf9;
-}
-
-.tag-2{
+  }
+  
+  .tag-2 {
     background-color: #eab308;
     color: #fafaf9;
-}
-
-ul{
-    list-style: none ;
-   
-}
-
-.src:link , .src:visited{
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .src:link,
+  .src:visited {
     color: #a8a29e;
     text-decoration: none;
-    margin-left:12px;
-    transition: 0.2s ;
-}
-
-/* pseduo class */
-.src:hover,src:active{
-    color: #3b82f6
-}
-
-.btn {
-    display: block;
+    margin-left: 12px;
+    transition: 0.2s;
+  }
+  
+  /* pseudo class */
+  .src:hover,
+  src:active {
+    color: #3b82f6;
+  }
+  
+  .btn {
+    display:inline-block ;
     width: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     line-height: 1;
@@ -192,80 +191,82 @@ ul{
     border-radius: 10px;
     cursor: pointer;
     transition: 0.2s;
-}
-
-.btn .btn-large{
+  }
+  
+  .btn .btn-large {
     font-size: 20px;
     padding: 20px 32px 17px;
-}
-
-/* Styling for category buttons */
-.btn-category {
+  }
+  
+  /* Styling for category buttons */
+  .btn-category {
     width: 100%;
     background-image: none;
     /* Additional styles for hover effect */
     transition: transform 0.2s;
-}
-
-/* Hover effect for category buttons */
-.btn-category:hover {
+  }
+  
+  /* Hover effect for category buttons */
+  .btn-category:hover {
     transform: scale(1.1) rotate(-2deg);
-}
-
-/* for responsive decive */
-
-@media (max-width: 768px){
-    .main{
-        grid-template-columns: 1fr;
+  }
+  
+  /* for responsive devices */
+  
+  @media (max-width: 768px) {
+    .main {
+      grid-template-columns: 1fr;
     }
-    .head{
-        flex-direction: column;
-        align-items: center;
+    .head {
+      flex-direction: column;
+      align-items: center;
     }
-    .logo{
-        margin-bottom: 20px;
+    .logo {
+      margin-bottom: 20px;
     }
-    .fact-form{
-        flex-direction: column;
-        align-items: flex-start;
+    .fact-form {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .fact-form input , .fact-form select{
-        width: 100%;
+    .fact-form input,
+    .fact-form select {
+      width: 100%;
     }
-    .vote{
-        margin-left: 0;
-        margin-top: 20px;
+    .vote {
+      margin-left: 0;
+      margin-top: 20px;
     }
-    .vote button{
-        font-size: 16px;
-        padding: 4px 8px;
+    .vote button {
+      font-size: 16px;
+      padding: 4px 8px;
     }
-    .btn-large{
-        font-size: 18px;
-        padding: 16px 24px 13px;
+    .btn-large {
+      font-size: 18px;
+      padding: 16px 24px 13px;
     }
-    .fact{
-        flex-direction: column;
-        align-items: flex-start;
+    .fact {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    .fact-form{
-        padding: 16px 20px;
+    .fact-form {
+      padding: 16px 20px;
     }
-    .fact-form span{
-        margin-right: 10px;
+    .fact-form span {
+      margin-right: 10px;
     }
-    .fact-form input , .fact-form select{
-        margin-right: 0;
-        margin-bottom: 10px;
+    .fact-form input,
+    .fact-form select {
+      margin-right: 0;
+      margin-bottom: 10px;
     }
-    .tag{
-        margin-bottom: 10px;
+    .tag {
+      margin-bottom: 10px;
     }
-    .tag-2{
-        margin-bottom: 10px;
+    .tag-2 {
+      margin-bottom: 10px;
     }
-    .src{
-        margin-left: 0;
+    .src {
+      margin-left: 0;
     }
-}
-
+  }
+  

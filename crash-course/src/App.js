@@ -10,28 +10,25 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState('all');
 
-  useEffect(
-    function () {
-      async function getFacts() {
-        setIsLoading(true);
+  useEffect(() => {
+    async function getFacts() {
+      setIsLoading(true);
 
-        let query = supabase.from('facts').select('*');
+      let query = supabase.from('facts').select('*');
 
-        if (currentCategory !== 'all')
-          query = query.eq('category', currentCategory);
+      if (currentCategory !== 'all')
+        query = query.eq('category', currentCategory);
 
-        const { data: facts, error } = await query
-          .order('votesInteresting', { ascending: false })
-          .limit(1000);
+      const { data: facts, error } = await query
+        .order('votesInteresting', { ascending: false })
+        .limit(1000);
 
-        if (!error) setFacts(facts);
-        else alert('There was a problem getting data');
-        setIsLoading(false);
-      }
-      getFacts();
-    },
-    [currentCategory]
-  );
+      if (!error) setFacts(facts);
+      else alert('There was a problem getting data');
+      setIsLoading(false);
+    }
+    getFacts();
+  }, [currentCategory]);
 
   return (
     <>
@@ -100,7 +97,6 @@ function isValidHttpUrl(string) {
 
 function NewFactForm({ setFacts, setShowForm }) {
   const [text, setText] = useState('');
-  // Fixed in a video text overlay
   const [source, setSource] = useState('');
   const [category, setCategory] = useState('');
   const [isUploading, setIsUploading] = useState(false);
@@ -113,19 +109,7 @@ function NewFactForm({ setFacts, setShowForm }) {
 
     // 2. Check if data is valid. If so, create a new fact
     if (text && isValidHttpUrl(source) && category && textLength <= 200) {
-      // 3. Create a new fact object
-      // const newFact = {
-      //   id: Math.round(Math.random() * 10000000),
-      //   text,
-      //   source,
-      //   category,
-      //   votesInteresting: 0,
-      //   votesMindblowing: 0,
-      //   votesFalse: 0,
-      //   createdIn: new Date().getFullYear(),
-      // };
-
-      // 3. Upload fact to Supabase and receive the new fact object
+   // 3. Upload fact to Supabase and receive the new fact object
       setIsUploading(true);
       const { data: newFact, error } = await supabase
         .from('facts')
@@ -271,21 +255,21 @@ function Fact({ fact, setFacts }) {
       <div className='vote-buttons'>
         <button
           className='btn'
-          onClick={() => handleVote('votesInteresting')}
+          onClick={() => handleVote('votesInteresting',true)}
           disabled={isUpdating}
         >
           👍 {fact.votesInteresting}
         </button>
         <button
           className='btn'
-          onClick={() => handleVote('votesMindblowing')}
+          onClick={() => handleVote('votesMindblowing',true)}
           disabled={isUpdating}
         >
           🤯 {fact.votesMindblowing}
         </button>
         <button
           className='btn'
-          onClick={() => handleVote('votesFalse')}
+          onClick={() => handleVote('votesFalse',true)}
           disabled={isUpdating}
         >
           ⛔️ {fact.votesFalse}
