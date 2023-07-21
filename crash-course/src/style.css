@@ -128,7 +128,7 @@
     gap: 8px;
   }
   
-  .vote button {
+  .vote-buttons {
     border: none;
     background-color: #44403c;
     font-size: 18px;
@@ -138,6 +138,8 @@
     font-family: inherit;
     font-weight: 700;
     cursor: pointer;
+    display : flex;
+    text-align: right
   }
   
   .vote button:hover {
