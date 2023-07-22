@@ -165,7 +165,7 @@ function NewFactForm({ setFacts, setShowForm }) {
     </form>
   );
 }
-
+// displays the categories
 function CategoryFilter({ setCurrentCategory }) {
   return (
     <aside>
@@ -210,10 +210,12 @@ function FactList({ facts, setFacts }) {
           <Fact key={fact.id} fact={fact} setFacts={setFacts} />
         ))}
       </ul>
+      {/* Dispalys the number of facts in the specific field */}
       <p>There are {facts.length} facts in the database. Add your own!</p>
     </section>
   );
 }
+// used to display the facts
 function Fact({ fact, setFacts }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const isDisputed =
