@@ -65,7 +65,7 @@ function Header({ showForm, setShowForm }) {
       </div>
 
       <button
-        className='btn btn-large btn-open'
+        className='btn-open'
         onClick={() => setShowForm((show) => !show)}
       >
         {showForm ? 'Close' : 'Share a fact'}

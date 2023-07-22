@@ -195,9 +195,24 @@
     transition: 0.2s;
   }
   
-  .btn .btn-large {
+  .btn-open {
     font-size: 20px;
     padding: 20px 32px 17px;
+    border-radius: 75px;
+    background-color: #3b82f6; /* Replace with your desired background color */
+    color: black; /* Replace with your desired text color */
+    /* MAKE THE FONT BOLD */
+    font-weight: bold;
+    border: none; /* Remove border since we're using border-radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+  
+    /* Optional Hover Effects */
+    transition: background-color 0.3s ease; /* Smooth transition on background color */
+  }
+  
+  /* Hover Effect - Darken the background color on hover */
+  .btn-open:hover {
+    background-color: #2980b9; /* Replace with your desired hover background color */
   }
   
   /* Styling for category buttons */
