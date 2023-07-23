@@ -1,10 +1,24 @@
-import { useEffect, useState , /*useRef*/ } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from './supabase';
-import ReactAudioPlayer from 'react-audio-player';
-// import BackgroundMusic from './BackgroundMusic';
+
 import './style.css';
 
+// Problems so far 
+// create to do list 
+/*
+- Fix the bug where the votes are not updating
+- Add a feature to delete a fact
+- Add a feature to edit a fact
+- Add a feature to filter facts by category
+- Add a feature to sort facts by votes
+- Create/update facts not working 
+- Data isnt being pulled from the database - **IMP**
+ 
 
+
+
+
+*/
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
@@ -33,7 +47,6 @@ function App() {
 
   return (
     <>
-   
       <Header showForm={showForm} setShowForm={setShowForm} />
       {showForm ? (
         <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
@@ -48,8 +61,6 @@ function App() {
           <FactList facts={facts} setFacts={setFacts} />
         )}
       </main>
-       {/* Backgroud mUSIC */}
-    <BackgroundMusic />
     </>
   );
 }
@@ -280,22 +291,6 @@ function Fact({ fact, setFacts }) {
         </button>
       </div>
     </li>
-  );
-}
-
-
-function BackgroundMusic() {
-  const [player, setPlayer] = useState(null);
-  return (
-    <>
-      <ReactAudioPlayer
-        src="audio.mp3" // Replace with the URL of your audio file
-        autoPlay
-        controls
-        loop
-        muted={!player || player.getPlayerState() === 1 || player.getPlayerState() === 3} // Mute audio when video is playing (1: playing, 3: buffering)
-      />
-    </>
   );
 }
 
