@@ -102,10 +102,6 @@
     font-family: inherit;
   }
   
-  .fact-form input:first-child {
-    /* will take all the space */
-    /* flex-grow: 1; */
-  }
   
   /* pseudo element */
   .fact-form input::placeholder {
@@ -205,7 +201,6 @@
     font-weight: bold;
     border: none; /* Remove border since we're using border-radius */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
-  
     /* Optional Hover Effects */
     transition: background-color 0.3s ease; /* Smooth transition on background color */
   }

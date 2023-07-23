@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , /*useRef*/ } from 'react';
 import supabase from './supabase';
-
+import ReactAudioPlayer from 'react-audio-player';
+// import BackgroundMusic from './BackgroundMusic';
 import './style.css';
 
 
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <>
+   
       <Header showForm={showForm} setShowForm={setShowForm} />
       {showForm ? (
         <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
@@ -46,6 +48,8 @@ function App() {
           <FactList facts={facts} setFacts={setFacts} />
         )}
       </main>
+       {/* Backgroud mUSIC */}
+    <BackgroundMusic />
     </>
   );
 }
@@ -65,7 +69,7 @@ function Header({ showForm, setShowForm }) {
       </div>
 
       <button
-        className='btn-open'
+        className='btn btn-large btn-open'
         onClick={() => setShowForm((show) => !show)}
       >
         {showForm ? 'Close' : 'Share a fact'}
@@ -165,7 +169,7 @@ function NewFactForm({ setFacts, setShowForm }) {
     </form>
   );
 }
-// displays the categories
+
 function CategoryFilter({ setCurrentCategory }) {
   return (
     <aside>
@@ -210,12 +214,10 @@ function FactList({ facts, setFacts }) {
           <Fact key={fact.id} fact={fact} setFacts={setFacts} />
         ))}
       </ul>
-      {/* Dispalys the number of facts in the specific field */}
       <p>There are {facts.length} facts in the database. Add your own!</p>
     </section>
   );
 }
-// used to display the facts
 function Fact({ fact, setFacts }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const isDisputed =
@@ -278,6 +280,22 @@ function Fact({ fact, setFacts }) {
         </button>
       </div>
     </li>
+  );
+}
+
+
+function BackgroundMusic() {
+  const [player, setPlayer] = useState(null);
+  return (
+    <>
+      <ReactAudioPlayer
+        src="audio.mp3" // Replace with the URL of your audio file
+        autoPlay
+        controls
+        loop
+        muted={!player || player.getPlayerState() === 1 || player.getPlayerState() === 3} // Mute audio when video is playing (1: playing, 3: buffering)
+      />
+    </>
   );
 }
 
