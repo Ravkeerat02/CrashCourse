@@ -4,13 +4,8 @@ import ReactAudioPlayer from 'react-audio-player';
 // import BackgroundMusic from './BackgroundMusic';
 import './style.css';
 
-/* Issue - Settings werent correct in the supabaase
-  Fix - changing the current settings to the correct ones
+//  
 
-  Code works as usual
-  Things to fdo
-  - Adding a react counter 
-*/
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
