@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "crash-course/build/**/*", "use": "@vercel/static" }
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/crash-course/(.*)", "dest": "/crash-course/build/$1" },
+      { "src": "/crash-course/?(.*)", "dest": "/crash-course/build/index.html" }
+    ]
+  }
+  
