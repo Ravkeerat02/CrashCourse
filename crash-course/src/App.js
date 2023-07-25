@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react';
 import supabase from './supabase';
-
+import ReactAudioPlayer from 'react-audio-player';
+// import BackgroundMusic from './BackgroundMusic';
 import './style.css';
 
-// Problems so far 
-// create to do list 
-/*
-- Fix the bug where the votes are not updating
-- Add a feature to delete a fact
-- Add a feature to edit a fact
-- Add a feature to filter facts by category
-- Add a feature to sort facts by votes
-- Create/update facts not working 
-- Data isnt being pulled from the database - **IMP**
- 
+/* Issue - Settings werent correct in the supabaase
+  Fix - changing the current settings to the correct ones
 
-
-
-
+  Code works as usual
+  Things to fdo
+  - Adding a react counter 
 */
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -34,12 +26,21 @@ function App() {
       if (currentCategory !== 'all')
         query = query.eq('category', currentCategory);
 
-      const { data: facts, error } = await query
-        .order('votesInteresting', { ascending: false })
-        .limit(1000);
+      try {
+        const { data: facts, error } = await query
+          .order('votesInteresting', { ascending: false })
+          .limit(1000);
 
-      if (!error) setFacts(facts);
-      else alert('There was a problem getting data');
+        if (!error) {
+          setFacts(facts);
+          console.log(facts); // Display the fetched facts in the console
+        } else {
+          alert('There was a problem getting data');
+        }
+      } catch (error) {
+        alert('There was a problem getting data');
+      }
+
       setIsLoading(false);
     }
     getFacts();
@@ -61,6 +62,8 @@ function App() {
           <FactList facts={facts} setFacts={setFacts} />
         )}
       </main>
+        {/* Backgroud mUSIC */}
+    <BackgroundMusic />
     </>
   );
 }
@@ -80,7 +83,7 @@ function Header({ showForm, setShowForm }) {
       </div>
 
       <button
-        className='btn btn-large btn-open'
+        className='btn-open'
         onClick={() => setShowForm((show) => !show)}
       >
         {showForm ? 'Close' : 'Share a fact'}
@@ -117,33 +120,32 @@ function NewFactForm({ setFacts, setShowForm }) {
   const [isUploading, setIsUploading] = useState(false);
   const textLength = text.length;
 
-  async function handleSubmit(e) {
-    // 1. Prevent browser reload
-    e.preventDefault();
-    console.log(text, source, category);
+// Function to handle form submission
+async function handleSubmit(e) {
+  e.preventDefault();
 
-    // 2. Check if data is valid. If so, create a new fact
-    if (text && isValidHttpUrl(source) && category && textLength <= 200) {
-   // 3. Upload fact to Supabase and receive the new fact object
-      setIsUploading(true);
-      const { data: newFact, error } = await supabase
-        .from('facts')
-        .insert([{ text, source, category }])
-        .select();
-      setIsUploading(false);
+  // Check if data is valid
+  if (text && isValidHttpUrl(source) && category && textLength <= 200) {
+    setIsUploading(true);
+    
+    // Upload fact to Supabase and receive the new fact object
+    try {
+      const { data: newFact, error } = await supabase.from('facts').insert([{ text, source, category }]).select();
 
-      // 4. Add the new fact to the UI: add the fact to state
-      if (!error) setFacts((facts) => [newFact[0], ...facts]);
-
-      // 5. Reset input fields
-      setText('');
-      setSource('');
-      setCategory('');
-
-      // 6. Close the form
-      setShowForm(false);
+      if (!error) {
+        setFacts((facts) => [newFact[0], ...facts]);
+        setText('');
+        setSource('');
+        setCategory('');
+        setShowForm(false);
+      }
+    } catch (error) {
+      alert('There was a problem uploading data');
     }
+
+    setIsUploading(false);
   }
+}
 
   return (
     <form className='fact-form' onSubmit={handleSubmit}>
@@ -180,35 +182,35 @@ function NewFactForm({ setFacts, setShowForm }) {
     </form>
   );
 }
-
-function CategoryFilter({ setCurrentCategory }) {
-  return (
-    <aside>
-      <ul>
-        <li className='category'>
-          <button
-            className='btn btn-all-categories'
-            onClick={() => setCurrentCategory('all')}
-          >
-            All
-          </button>
-        </li>
-
-        {CATEGORIES.map((cat) => (
-          <li key={cat.name} className='category'>
+  // CategoryFilter component
+  function CategoryFilter({ setCurrentCategory }) {
+    return (
+      <aside>
+        <ul>
+          <li className='category'>
             <button
-              className='btn btn-category'
-              style={{ backgroundColor: cat.color }}
-              onClick={() => setCurrentCategory(cat.name)}
+              className='btn btn-all-categories'
+              onClick={() => setCurrentCategory('all')}
             >
-              {cat.name}
+              All
             </button>
           </li>
-        ))}
-      </ul>
-    </aside>
-  );
-}
+
+          {CATEGORIES.map((cat) => (
+            <li key={cat.name} className='category'>
+              <button
+                className='btn btn-category'
+                style={{ backgroundColor: cat.color }}
+                onClick={() => setCurrentCategory(cat.name)}
+              >
+                {cat.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    );
+  }
 
 function FactList({ facts, setFacts }) {
   if (facts.length === 0)
@@ -225,10 +227,12 @@ function FactList({ facts, setFacts }) {
           <Fact key={fact.id} fact={fact} setFacts={setFacts} />
         ))}
       </ul>
+      {/* Dispalys the number of facts in the specific field */}
       <p>There are {facts.length} facts in the database. Add your own!</p>
     </section>
   );
 }
+// used to display the facts
 function Fact({ fact, setFacts }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const isDisputed =
@@ -291,6 +295,22 @@ function Fact({ fact, setFacts }) {
         </button>
       </div>
     </li>
+  );
+}
+
+
+function BackgroundMusic() {
+  const [player, /*setPlayer*/] = useState(null);
+  return (
+    <>
+      <ReactAudioPlayer
+        src="audio.mp3" // Replace with the URL of your audio file
+        autoPlay
+        controls
+        loop
+        muted={!player || player.getPlayerState() === 1 || player.getPlayerState() === 3} // Mute audio when video is playing (1: playing, 3: buffering)
+      />
+    </>
   );
 }
 

@@ -254,7 +254,23 @@
     }
     .btn-large {
       font-size: 18px;
-      padding: 16px 24px 13px;
+      padding: 20px 32px 17px;
+      color: white;
+      border: none;
+      border-radius: 25px;
+
+    }
+    
+    /* Hover effect */
+    .btn-large:hover {
+      background-color: #45a049;
+    }
+    
+    /* Disabled effect */
+    .btn-large:disabled {
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
     }
     .fact {
       flex-direction: column;
